@@ -2452,7 +2452,9 @@ UserInputService.InputBegan:Connect(function(input, processed)
             Hide()
         end
     end
-    if identifyexecutor() == "Codex" or executor == "Delta" or executor == "Arceus" then
+
+    local executor = identifyexecutor()
+    if executor == "Codex" or executor == "Arceus X" or executor == "Vega" then
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
@@ -2465,7 +2467,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         UICorner.CornerRadius = UDim.new(0, 8)
         UICorner.Parent = ImageButton
         ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
-        ImageButton.MouseButton1Click:Connect(function()
+        UserInputService.TouchTap:Connect(function(touchPositions, processed)
             if Debounce then return end
             if Hidden then
                 Hidden = false
