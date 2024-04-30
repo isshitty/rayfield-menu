@@ -2456,31 +2456,21 @@ UserInputService.InputBegan:Connect(function(input, processed)
             Hide()
         end
     elseif identifyexecutor() == "Codex" or executor == "Vega" or executor == "Arceus X" then
-        if input.KeyCode == Enum.KeyCode.RightShift and not processed then
-            if Debounce then return end
+        local ScreenGui = Instance.new("ScreenGui")
+        ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+        local ImageButton = Instance.new("ImageButton")
+        ImageButton.Size = UDim2.new(0, 50, 0, 50)
+        ImageButton.Position = UDim2.new(0.5, -10, 0.8, 75)
+        ImageButton.AnchorPoint = Vector2.new(0.5, 0.5)
+        ImageButton.Parent = ScreenGui
+        ImageButton.Image = "rbxassetid://17146676336"
+        local UICorner = Instance.new("UICorner")
+        UICorner.CornerRadius = UDim.new(0, 8)
+        UICorner.Parent = ImageButton
+        ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+        ImageButton.TouchTap:Connect(function(touchPositions, processed)
+        if Debounce then return end
             if Hidden then
-                Hidden = false
-                Unhide()
-            else
-                Hidden = true
-                Hide()
-            end
-        else
-            local ScreenGui = Instance.new("ScreenGui")
-            ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-            local ImageButton = Instance.new("ImageButton")
-            ImageButton.Size = UDim2.new(0, 50, 0, 50)
-            ImageButton.Position = UDim2.new(0.5, -10, 0.8, 75)
-            ImageButton.AnchorPoint = Vector2.new(0.5, 0.5)
-            ImageButton.Parent = ScreenGui
-            ImageButton.Image = "rbxassetid://17146676336"
-            local UICorner = Instance.new("UICorner")
-            UICorner.CornerRadius = UDim.new(0, 8)
-            UICorner.Parent = ImageButton
-            ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
-            ImageButton.TouchTap:Connect(function(touchPositions, processed)
-                if Debounce then return end
-                if Hidden then
                     Hidden = false
                     Unhide()
                 else
