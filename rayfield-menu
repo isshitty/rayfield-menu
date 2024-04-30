@@ -2442,19 +2442,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-    if (input.KeyCode == Enum.KeyCode.RightShift and not processed) then
-        if Debounce then return end
-        if Hidden then
-            Hidden = false
-            Unhide()
-        else
-            Hidden = true
-            Hide()
-        end
-    end
-
-    local executor = identifyexecutor()
-    if executor == "Codex" or executor == "Arceus X" or executor == "Vega" then
+    if identifyexecutor() == "Codex" or executor == "Vega" or executor == "Arceus X" then
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
@@ -2467,7 +2455,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         UICorner.CornerRadius = UDim.new(0, 8)
         UICorner.Parent = ImageButton
         ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
-        UserInputService.MouseButton1Down:Connect(function()
+        UserInputService.TouchTap:Connect(function(touchPositions, processed)
             if Debounce then return end
             if Hidden then
                 Hidden = false
@@ -2477,6 +2465,17 @@ UserInputService.InputBegan:Connect(function(input, processed)
                 Hide()
             end
         end)
+    else
+        if input.KeyCode == Enum.KeyCode.RightShift and not processed then
+            if Debounce then return end
+            if Hidden then
+                Hidden = false
+                Unhide()
+            else
+                Hidden = true
+                Hide()
+            end
+        end
     end
 end)
 
