@@ -2452,22 +2452,29 @@ UserInputService.InputBegan:Connect(function(input, processed)
             Hide()
         end
     end
-    if identifyexecutor() == "Codex" or executor == "Delta" or executor == "Arceus" then
-        local button = Instance.new("TextButton")
-        button.Text = "Toggle Menu"
-        button.Size = UDim2.new(0, 100, 0, 50)
-        button.Position = UDim2.new(0.5, -50, 0.5, -25)
-        button.Parent = game:GetService("GuiService").GuiInset
-        button.MouseButton1Click:Connect(function()
-            if Debounce then return end
-            if Hidden then
-                Hidden = false
-                Unhide()
-            else
-                Hidden = true
-                Hide()
-            end
-        end)
+    if identifyexecutor() == "Codex" or executor == "Delta" or executor == "Arceus X" then
+    local gui = Instance.new("ScreenGui")
+    gui.Parent = game:GetService("CoreGui")
+
+    local button = Instance.new("ImageButton")
+    button.Name = "ToggleMenu"
+    button.Image = "rbxassetid://17146676336"
+    button.Size = UDim2.new(0, 100, 0, 50)
+    button.Position = UDim2.new(0.5, -50, 0.5, -25)
+    button.Parent = gui
+
+    button.MouseButton1Click:Connect(function()
+        if Debounce then return end
+        if Hidden then
+            Hidden = false
+            Unhide()
+        else
+            Hidden = true
+            Hide()
+        end
+    end)
+end
+
     end
 end)
 
