@@ -2447,6 +2447,16 @@ end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
     if identifyexecutor() == "Codex" or executor == "Vega" or executor == "Arceus X" then
+	if input.KeyCode == Enum.KeyCode.RightShift and not processed then
+            if Debounce then return end
+            if Hidden then
+                Hidden = false
+                Unhide()
+            else
+                Hidden = true
+                Hide()
+            end
+        end
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
@@ -2469,16 +2479,6 @@ UserInputService.InputBegan:Connect(function(input, processed)
                 Hide()
             end
         end)
-        if input.KeyCode == Enum.KeyCode.RightShift and not processed then
-            if Debounce then return end
-            if Hidden then
-                Hidden = false
-                Unhide()
-            else
-                Hidden = true
-                Hide()
-            end
-        end
     else
         if input.KeyCode == Enum.KeyCode.RightShift and not processed then
             if Debounce then return end
