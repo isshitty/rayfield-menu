@@ -2459,7 +2459,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         UICorner.CornerRadius = UDim.new(0, 8)
         UICorner.Parent = ImageButton
         ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
-        ImageButton.MouseButton1Click:Connect(function()
+        ImageButton.TouchTap:Connect(function(touchPositions, processed)
             if Debounce then return end
             if Hidden then
                 Hidden = false
@@ -2467,6 +2467,18 @@ UserInputService.InputBegan:Connect(function(input, processed)
             else
                 Hidden = true
                 Hide()
+            end
+        end)
+        inputService.InputBegan:Connect(function(input, processed)
+            if input.KeyCode == Enum.KeyCode.RightShift and not processed then
+                if Debounce then return end
+                if Hidden then
+                    Hidden = false
+                    Unhide()
+                else
+                    Hidden = true
+                    Hide()
+                end
             end
         end)
     else
