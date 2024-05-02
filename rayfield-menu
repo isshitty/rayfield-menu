@@ -637,7 +637,7 @@ end
 
 function Hide()
 	Debounce = true
-	if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" then
+	if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" or identifyexecutor() == "Delta" then
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below", Duration = 7})
         else
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightShift", Duration = 7})
@@ -2446,7 +2446,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-    if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" then
+    if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" or identifyexecutor() == "Delta" then
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
