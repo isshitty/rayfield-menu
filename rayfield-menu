@@ -2459,7 +2459,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         local UICorner = Instance.new("UICorner")
         UICorner.CornerRadius = UDim.new(0, 8)
         UICorner.Parent = ImageButton
-        ImageButton.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+        ImageButton.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
         ImageButton.TouchTap:Connect(function(touchPositions, processed)
             if Debounce then return end
             if Hidden then
