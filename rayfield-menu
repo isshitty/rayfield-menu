@@ -637,7 +637,7 @@ end
 
 function Hide()
 	Debounce = true
-	if game:GetService("UserInputService"):GetPlatform() == Enum.Platform.IOS or game:GetService("UserInputService"):GetPlatform() == Enum.Platform.Android then
+	if input.GetPlatform() == Enum.Platform.IOS or input.GetPlatform() == Enum.Platform.Android then
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below or RightShift", Duration = 7})
         else
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightShift", Duration = 7})
@@ -2446,7 +2446,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-    if game:GetService("UserInputService"):GetPlatform() == Enum.Platform.IOS or game:GetService("UserInputService"):GetPlatform() == Enum.Platform.Android then
+    if input.GetPlatform() == Enum.Platform.IOS or input.GetPlatform() == Enum.Platform.Android then
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
