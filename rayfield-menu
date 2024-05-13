@@ -637,8 +637,8 @@ end
 
 function Hide()
 	Debounce = true
-	if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" or identifyexecutor() == "Delta" then
-            RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below", Duration = 7})
+	if input:GetPlatform() == Enum.Platform.IOS or input:GetPlatform() == Enum.Platform.Android then
+            RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below or RightShift", Duration = 7})
         else
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightShift", Duration = 7})
         end
@@ -2445,13 +2445,24 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 	end
 end)
 
+if input.KeyCode == Enum.KeyCode.RightShift and not processed then
+    if Debounce then return end
+    if Hidden then
+        Hidden = false
+        Unhide()
+    else
+        Hidden = true
+        Hide()
+    end
+end
+
 UserInputService.InputBegan:Connect(function(input, processed)
-    if identifyexecutor() == "Codex" or identifyexecutor() == "Vega" or identifyexecutor() == "Arceus X" or identifyexecutor() == "Evon" or identifyexecutor() == "Delta" then
+    if input:GetPlatform() == Enum.Platform.IOS or input:GetPlatform() == Enum.Platform.Android then
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
         local ImageButton = Instance.new("ImageButton")
         ImageButton.Size = UDim2.new(0, 50, 0, 50)
-        ImageButton.Position = UDim2.new(0.5, -10, 0.8, 75)
+        ImageButton.Position = UDim2.new(0.5, -25, 0.8, 75)
         ImageButton.AnchorPoint = Vector2.new(0.5, 0.5)
         ImageButton.Parent = ScreenGui
         ImageButton.Image = "rbxassetid://17146676336"
@@ -2469,17 +2480,6 @@ UserInputService.InputBegan:Connect(function(input, processed)
                 Hide()
             end
         end)
-    else
-        if input.KeyCode == Enum.KeyCode.RightShift and not processed then
-            if Debounce then return end
-            if Hidden then
-                Hidden = false
-                Unhide()
-            else
-                Hidden = true
-                Hide()
-            end
-        end
     end
 end)
 
