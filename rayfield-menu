@@ -639,7 +639,7 @@ end
 function Hide()
 	Debounce = true
 	if inputService:GetPlatform() ~= Enum.Platform.Windows and inputService:GetPlatform() ~= Enum.Platform.OSX and inputService:GetPlatform() ~= Enum.Platform.UWP then
-            RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below or RightShift", Duration = 7})
+            RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Button below", Duration = 7})
         else
             RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightShift", Duration = 7})
         end
